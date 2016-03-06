@@ -56,8 +56,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DestroyMonitor.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="ModIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Localization\LocalizationExtensions.cs" />
+    <Compile Include="UI\Localization\LocalizationManager.cs" />
+    <Compile Include="UI\Localization\LocalizationMonitor.cs" />
+    <Compile Include="UI\UIAutoBulldozerPanel.cs" />
+    <Compile Include="UI\UILoadingExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lang_en.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lang_ru.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

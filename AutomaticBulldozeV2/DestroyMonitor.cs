@@ -1,4 +1,5 @@
-﻿using ColossalFramework;
+﻿using AutomaticBulldozeV2.UI;
+using ColossalFramework;
 using ICities;
 using UnityEngine;
 
@@ -66,10 +67,9 @@ namespace AutomaticBulldozeV2
                 if (buffer[i].m_flags == Building.Flags.None)
                     continue;
 
-                if ((buffer[i].m_flags & (Building.Flags.Abandoned | Building.Flags.BurnedDown)) != Building.Flags.None)
+                if (UIAutoBulldozerPanel.DemolishAbandoned && (buffer[i].m_flags & buffer[i].m_flags & Building.Flags.Abandoned) != Building.Flags.None
+                    || UIAutoBulldozerPanel.DemolishBurned && (buffer[i].m_flags & buffer[i].m_flags & Building.Flags.BurnedDown) != Building.Flags.None)
                 {
-                    //            if (BulldozerPanelInterface.b_demolishAbandoned && ((build.m_flags & Building.Flags.Abandoned) != Building.Flags.None)) needToDemolish = true;
-                    //            if (BulldozerPanelInterface.b_demolishBurned && ((build.m_flags & Building.Flags.BurnedDown) != Building.Flags.None)) needToDemolish = true;
                     this.DeleteBuildingImpl(i, ref buffer[i]);
                 }
             }
