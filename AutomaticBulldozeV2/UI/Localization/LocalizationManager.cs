@@ -151,6 +151,7 @@ namespace AutomaticBulldozeV2.UI.Localization
                     return 220;
                 case "pr":
                 case "fr":
+                case "es":
                     return 210;
             }
         }

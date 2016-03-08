@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="Spanish">
+  <LocaleResource Name="Switch.DemolishAbandoned">
+    <Value>Demoler Abandonados</Value>
+  </LocaleResource>
+  <LocaleResource Name="Switch.DemolishBurned">
+    <Value>Demoler Quemados</Value>
+  </LocaleResource>
+</Language>
