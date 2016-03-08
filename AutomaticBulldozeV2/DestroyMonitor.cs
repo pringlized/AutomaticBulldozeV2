@@ -24,14 +24,14 @@ namespace AutomaticBulldozeV2
             _nullAudioGroup = new AudioGroup(0, new SavedFloat("NOTEXISTINGELEMENT", Settings.gameSettingsFile, 0, false));
         }
 
-        private int GetBuildingRefundAmount(ushort id, ref Building building)
+        private int GetBuildingRefundAmount(ref ushort id, ref Building building)
         {
-            if (_simulationManager.IsRecentBuildIndex(building.m_buildIndex))
-                return building.Info.m_buildingAI.GetRefundAmount(id, ref building);
-            return 0;
+            return _simulationManager.IsRecentBuildIndex(building.m_buildIndex) 
+                ? building.Info.m_buildingAI.GetRefundAmount(id, ref building) 
+                : 0;
         }
 
-        private void DispatchAutobulldozeEffect(BuildingInfo info, Vector3 pos, float angle, int length)
+        private void DispatchAutobulldozeEffect(BuildingInfo info, ref Vector3 pos, ref float angle, int length)
         {
             var effect = _buildingManager.m_properties.m_bulldozeEffect;
             if (effect == null)
@@ -41,36 +41,31 @@ namespace AutomaticBulldozeV2
             _effectManager.DispatchEffect(effect, instance, spawnArea, Vector3.zero, 0.0f, 1f, _nullAudioGroup);
         }
 
-        private void DeleteBuildingImpl(ushort buildingId, ref Building building)
+        private void DeleteBuildingImpl(ref ushort buildingId, ref Building building)
         {
             var info = building.Info;
-            if (info.m_buildingAI.CheckBulldozing(buildingId, ref building) == ToolBase.ToolErrors.None)
-            {
-                var buildingRefundAmount = this.GetBuildingRefundAmount(buildingId, ref building);
-                if (buildingRefundAmount != 0)
-                    _economyManager.AddResource(EconomyManager.Resource.RefundAmount, buildingRefundAmount, info.m_class);
-                var pos = building.m_position;
-                var angle = building.m_angle;
-                var length = building.Length;
-                _buildingManager.ReleaseBuilding(buildingId);
-                if (ItemClass.GetPublicServiceIndex(info.m_class.m_service) != -1)
-                    _coverageManager.CoverageUpdated(info.m_class.m_service, info.m_class.m_subService, info.m_class.m_level);
-                this.DispatchAutobulldozeEffect(info, pos, angle, length);
-            }
+            if (info.m_buildingAI.CheckBulldozing(buildingId, ref building) != ToolBase.ToolErrors.None)
+                return;
+            var buildingRefundAmount = this.GetBuildingRefundAmount(ref buildingId, ref building);
+            if (buildingRefundAmount != 0)
+                _economyManager.AddResource(EconomyManager.Resource.RefundAmount, buildingRefundAmount, info.m_class);
+            this.DispatchAutobulldozeEffect(info, ref building.m_position, ref building.m_angle, building.Length);
+            _buildingManager.ReleaseBuilding(buildingId);
+            if (ItemClass.GetPublicServiceIndex(info.m_class.m_service) != -1)
+                _coverageManager.CoverageUpdated(info.m_class.m_service, info.m_class.m_subService, info.m_class.m_level);
         }
         
         public override void OnAfterSimulationTick()
         {
-            var buffer = _buildingManager.m_buildings.m_buffer;
             for (var i = (ushort)(_simulationManager.m_currentTickIndex % 1000); i < _buildingManager.m_buildings.m_buffer.Length; i += 1000)
             {
-                if (buffer[i].m_flags == Building.Flags.None)
+                if (_buildingManager.m_buildings.m_buffer[i].m_flags == Building.Flags.None)
                     continue;
 
-                if (UIAutoBulldozerPanel.DemolishAbandoned && (buffer[i].m_flags & buffer[i].m_flags & Building.Flags.Abandoned) != Building.Flags.None
-                    || UIAutoBulldozerPanel.DemolishBurned && (buffer[i].m_flags & buffer[i].m_flags & Building.Flags.BurnedDown) != Building.Flags.None)
+                if (UIAutoBulldozerPanel.DemolishAbandoned && (_buildingManager.m_buildings.m_buffer[i].m_flags & Building.Flags.Abandoned) != Building.Flags.None
+                    || UIAutoBulldozerPanel.DemolishBurned && (_buildingManager.m_buildings.m_buffer[i].m_flags & Building.Flags.BurnedDown) != Building.Flags.None)
                 {
-                    this.DeleteBuildingImpl(i, ref buffer[i]);
+                    this.DeleteBuildingImpl(ref i, ref _buildingManager.m_buildings.m_buffer[i]);
                 }
             }
         }
