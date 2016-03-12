@@ -28,7 +28,7 @@ namespace AutomaticBulldozeV2.UI
         private void UpdateCheckButton(UIButton button, bool isActive)
         {
             var inactiveColor = new Color32(64, 64, 64, 255);
-            var activeColor = new Color32(255, 64, 64, 255);
+            var activeColor = new Color32(64, 255, 64, 255);
             var textColor = new Color32(255, 255, 255, 255);
             var textColorDis = new Color32(128, 128, 128, 255);
 
