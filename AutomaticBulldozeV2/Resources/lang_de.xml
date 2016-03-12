@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="German">
+  <LocaleResource Name="Switch.DemolishAbandoned">
+    <Value>Verlassene Abreißen</Value>
+  </LocaleResource>
+  <LocaleResource Name="Switch.DemolishBurned">
+    <Value>Abgebrannte Abreißen</Value>
+  </LocaleResource>
+</Language>

@@ -142,17 +142,17 @@ namespace AutomaticBulldozeV2.UI.Localization
             switch (LocaleManager.instance.language)
             {
                 case null:
+                case "fr":
                 case "en":
-                case "de":
                 default:
                     return 200;
+                case "pr":
+                case "es":
+                case "de":
+                    return 210;
                 case "ru":
                 case "pl":
                     return 220;
-                case "pr":
-                case "fr":
-                case "es":
-                    return 210;
             }
         }
     }
