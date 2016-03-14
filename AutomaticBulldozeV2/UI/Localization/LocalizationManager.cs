@@ -149,6 +149,7 @@ namespace AutomaticBulldozeV2.UI.Localization
                 case "pr":
                 case "es":
                 case "de":
+                case "pt":
                     return 210;
                 case "ru":
                 case "pl":
