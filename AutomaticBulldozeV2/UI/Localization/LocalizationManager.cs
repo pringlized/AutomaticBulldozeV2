@@ -147,10 +147,11 @@ namespace AutomaticBulldozeV2.UI.Localization
                 default:
                     return 200;
                 case "pr":
-                case "es":
                 case "de":
                 case "pt":
                     return 210;
+                case "es":
+                    return 215;
                 case "ru":
                 case "pl":
                     return 220;
