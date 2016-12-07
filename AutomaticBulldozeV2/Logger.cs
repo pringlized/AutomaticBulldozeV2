@@ -7,12 +7,11 @@ namespace AutomaticBulldozeV2
     {
         private const string Prefix = "Automatic Bulldoze V2: ";
 
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void LogDebug(Func<string> acquire)
         {
-#if DEBUG
             var message = acquire();
             Debug.Log(Prefix + "(DEBUG) " + message);
-#endif
         }
 
         public static void Log(string message, params object[] args)

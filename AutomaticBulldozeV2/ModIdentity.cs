@@ -1,6 +1,4 @@
-﻿#if DEBUG
-using System.Reflection;
-#endif
+﻿using System.Reflection;
 using ICities;
 
 namespace AutomaticBulldozeV2
@@ -13,9 +11,9 @@ namespace AutomaticBulldozeV2
         {
             get
             {
-                return "Automatically destroys abandoned and burned buildings"
+                return $"Automatically destroys abandoned and burned buildings ({Assembly.GetExecutingAssembly().GetName().Version})"
 #if DEBUG
-                        + "DEBUG version " + Assembly.GetExecutingAssembly().GetName().Version
+                        + " DEBUG version"
 #endif
                     ;
             }

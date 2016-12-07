@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\BuildingExtensions.cs" />
+    <Compile Include="Extensions\BuildingManagerExtensions.cs" />
     <Compile Include="DestroyMonitor.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="ModIdentity.cs" />
