@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net35</TargetFrameworks>
-    <Company />
     <Description></Description>
     <Product>Automatic Bulldoze V2</Product>
     <Authors>Yury Shcherbakov</Authors>
-    <Version>2.1.7</Version>
+    <Version>2.1.7.1</Version>
     <PackageId />
     <PostBuildEvent>
       mkdir "%LOCALAPPDATA%\Colossal Order\Cities_Skylines\Addons\Mods\$(MSBuildProjectName)"
