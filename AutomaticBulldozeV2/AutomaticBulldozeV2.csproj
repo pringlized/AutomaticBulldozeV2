@@ -5,7 +5,7 @@
     <Description></Description>
     <Product>Automatic Bulldoze V2</Product>
     <Authors>Yury Shcherbakov</Authors>
-    <Version>2.1.7.1</Version>
+    <Version>2.1.7.2</Version>
     <PackageId />
     <PostBuildEvent>
       mkdir "%LOCALAPPDATA%\Colossal Order\Cities_Skylines\Addons\Mods\$(MSBuildProjectName)"
@@ -29,6 +29,7 @@
     <EmbeddedResource Include="Resources\lang_es.xml" />
     <EmbeddedResource Include="Resources\lang_fr.xml" />
     <EmbeddedResource Include="Resources\lang_pt.xml" />
+    <EmbeddedResource Include="Resources\lang_zh.xml" />
     <EmbeddedResource Include="Resources\lang_ru.xml" />
   </ItemGroup>
 

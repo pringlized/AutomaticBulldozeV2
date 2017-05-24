@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="Chinese Simplified">
+  <LocaleResource Name="Switch.DemolishAbandoned">
+    <Value>拆除废弃建筑</Value>
+  </LocaleResource>
+  <LocaleResource Name="Switch.DemolishBurned">
+    <Value>拆除烧毁建筑</Value>
+  </LocaleResource>
+</Language>
