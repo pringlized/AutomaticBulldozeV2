@@ -14,3 +14,4 @@ Initial ideas:
 - Need to build the "demo" department building
   - Need to build the "demo" crew.  Single vehicle doesn't seem right.  Feels like multiple vehicles are needed
   - Possible vehicles: high-reach excavator, demo ball, dumpsters, hauling trucks, etc
+- Ohh and assets.  Need to build the department building and the individual vehicles in Blender
