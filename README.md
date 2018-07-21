@@ -10,3 +10,6 @@ Initial ideas:
 - Maybe you could have multiple "stations" when your land expands and your city is huge
 - Never seen one, but a highrise building should take longer to demo than a single family home
 - Does demo create traffic problems?
+- Need to build the "demo" department building
+  - Need to build the "demo" crew.  Single vehicle doesn't seem right.  Feels like multiple vehicles are needed
+  - Possible vehicles: high-reach excavator, demo ball, dumpsters, hauling trucks, etc
